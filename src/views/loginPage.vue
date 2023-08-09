@@ -1,6 +1,6 @@
 <template>
     <div>
-       uigouguogu
+       uigouguoguasdsadsadas
     </div>
 </template>
 <script>
