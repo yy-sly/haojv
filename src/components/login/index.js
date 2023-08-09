@@ -7,7 +7,7 @@ export default function () {
     const hideNotice = () => {
         // document.body.removeChild(mountNode);
     };
-    const app = createVNode(loginPage, { name: 'notice' });
+    const app = createVNode(loginPage, {target:mountNode,name: 'notice'});
     render(app, mountNode);
     document.body.appendChild(mountNode);
     hideNotice();

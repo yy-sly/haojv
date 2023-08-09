@@ -1,4 +1,4 @@
-import { createRouter,createWebHistory} from 'vue-router'
+import { createRouter,createWebHashHistory} from 'vue-router'
 import Home from '../views/huoxingViews/homePage/homePage.vue'
 
 import routers from './huoxiangViews/index.js'
@@ -23,7 +23,7 @@ const routes = [
 const router = createRouter({
     //createWebHashHistory
     //createWebHistory
-  history: createWebHistory('/'),
+  history: createWebHashHistory('/'),
   routes
 })
 // router.beforeEach((to, from, next) => {

@@ -17,6 +17,7 @@ dd,
 input {
   margin: 0;
   padding: 0;
+  font-weight: 100;
 }
  
 /* 內减模式 */
@@ -86,3 +87,4 @@ input {
   /*width: 1240px;*/
   margin: 0 auto;
 }
+@import '//at.alicdn.com/t/c/font_4203748_ulhz26sdkab.css';

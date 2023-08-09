@@ -4,12 +4,13 @@ import store from './store'
 import './assets/style/style.css'
 import App from './App.vue'
 import Common from './common/common'
-
+import ElementPlus from 'element-plus'
+import 'element-plus/dist/index.css'
+import animated from 'animate.css'
 
 let Vue = createApp(App)
 
-Vue.provide('Common',Common)
+Vue.provide('Common', Common)
 
-Vue.use(store).use(router).mount('#app')
-Vue.config.globalProperties.$GLOBAL = Common//conmon里面定义的常量
+Vue.use(store).use(router).use(animated).use(ElementPlus).mount('#app')
 
