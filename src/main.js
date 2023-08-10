@@ -1,3 +1,4 @@
+import "./assets/icon/SourceHanSansCN-VF-2.css"
 import { createApp } from 'vue'
 import router from './router'
 import store from './store'

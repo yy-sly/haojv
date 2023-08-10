@@ -115,6 +115,7 @@ const closeFun = () => {
         overflow: hidden;
         font-size: 40px;
         line-height: 40px;
+        cursor:pointer;
     }
 
 }
