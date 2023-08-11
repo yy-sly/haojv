@@ -10,8 +10,8 @@ import {
 } from './serviceUrl'
 
 const axios = _axios.create({
-    baseURL: process.env.VUE_APP_BASE_API, 
-  })
+    baseURL: process.env.VUE_APP_BASE_API,
+})
 // axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded'
 // 无session请求
 export const nspost = (method, data, fun) => {
@@ -102,10 +102,8 @@ export const sendPost = async (url, data, config, fun) => {
             data,
             timeout: 150000
         })
-        if (res.data.header.code !== 10000) {
-            // common.jumpToLogin()
-            if (fun) fun(res)
-        } else if (res.data.header.code === 10000) {
+        if (fun) fun(res)
+        if (res.data.header.code === 10000) {
             let isWeiXin = common.isWeiXinBrowser()
             // 微信内 并且正式服
             if (isWeiXin) {
@@ -117,11 +115,9 @@ export const sendPost = async (url, data, config, fun) => {
                 common.removeStorage('sessionID')
                 common.removeStorage('member')
                 common.removeStorage('weixinToken')
-                common.jumpToLogin()
             }
         }
     } catch (err) {
-        console.log(err, 'err')
         if (err) {
             if (err.response) {
                 switch (err.response.status) {
@@ -186,3 +182,8 @@ export const sendPost = async (url, data, config, fun) => {
 }
 // 获取导航列表
 export const getNavigatorList = (data, callback) => dPost('getNavigatorList.json', data, callback)
+// 发送邮箱验证码
+export const submitEmailBandingMember = (data, callback) => dPost('submitEmailBandingMember.json', data, callback)
+// 获取轮播图
+export const getFocusList = (data, callback) => dPost('getFocusPictureList.json', data, callback)
+

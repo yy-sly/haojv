@@ -18,6 +18,7 @@ console.log(Common)
 console.log(process.env.VUE_APP_BASE_API)
 const store = useStore();
 store.dispatch('getNavList');
+store.dispatch('getSwiper');
 </script>
 
 <style lang="scss">
@@ -31,9 +32,6 @@ body,
   overflow-y: auto;
 }
 .app{
-  display: flex;
-  flex-direction: column;
-  position: relative;
   padding-top: 80px;
   main{
     width: 100%;
