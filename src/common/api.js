@@ -83,6 +83,7 @@ export const dPostAndroid = (method, domainName, data, fun) => {
 // axios 发送请求统一处理
 export const sendPost = async (url, data, config, fun) => {
     data = {
+        siteID: common.siteID,
         focusID: common.focusID,
         applicationID: common.applicationID,
         companyID: common.companyID,
@@ -186,4 +187,5 @@ export const getNavigatorList = (data, callback) => dPost('getNavigatorList.json
 export const submitEmailBandingMember = (data, callback) => dPost('submitEmailBandingMember.json', data, callback)
 // 获取轮播图
 export const getFocusList = (data, callback) => dPost('getFocusPictureList.json', data, callback)
-
+// 注册
+export const memberPhoneRegister = (data, callback) => dPost('memberPhoneRegister.json', data, callback)

@@ -8,7 +8,7 @@ export default {
     phoneInput: phoneInput,
     isWeiXinBrowser:isWeiXinBrowser,
     jumpToLoginWeiXin:jumpToLoginWeiXin,
-    titleID: [{ name: "男", titleID: '1d88af067fff4d6e95575e77f7365029' }, { name: "女", titleID: '384aba23a5ac4344b5848250d793cd64' }],
+    titleID: [{ name: "先生", titleID: '1d88af067fff4d6e95575e77f7365029' }, { name: "女士", titleID: '384aba23a5ac4344b5848250d793cd64' }],
     //站点ID
     siteID: '8a2f462a894988b901894cc087610223',
     //公司ID
