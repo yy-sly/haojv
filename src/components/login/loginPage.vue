@@ -197,7 +197,7 @@ const pageCut = () =>{
 }
 //关闭
 const closeFun = () => {
-    messageType.value = true
+    messageType.value = false
     setTimeout(() => {
         document.body.removeChild(props.target);
     }, 400);

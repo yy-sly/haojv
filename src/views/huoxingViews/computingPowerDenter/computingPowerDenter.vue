@@ -13,10 +13,12 @@
                     123123
                 </div>
                 <div>
-                    <el-table :data="tableData" border style="width: 100%">
-                        <el-table-column text-align="center" prop="" width="57" />
-                        <el-table-column text-align="center" prop="date" label="计算力" width/>
-                        <el-table-column text-align="center" prop="name" label="租期"/>
+                    <el-table :data="data.tableData" border style="width: 100%">
+                        <el-table-column text-align="center" prop="" width="57">
+                            <el-button size="small" type="info" :icon="Delete" circle />
+                        </el-table-column>
+                        <el-table-column text-align="center" prop="date" label="计算力" width />
+                        <el-table-column text-align="center" prop="name" label="租期" />
                         <el-table-column text-align="center" prop="address" label="金额" />
                     </el-table>
                 </div>
@@ -31,17 +33,20 @@
 <script setup>
 import mainHeader from "@/components/header/mainHeader.vue";
 import { getGoodsShopList, getGoodsShopDetail } from "@/common/api.js"
+import {
+  Delete,
+} from '@element-plus/icons-vue'
 import { reactive } from "vue";
 const data = reactive({
-    goods: {}
-})
-const tableData = [
+    goods: {},
+    tableData : [
     {
         date: '100',
         name: '6',
         address: '$1325645',
     }
 ]
+})
 getGoodsShopList({}, res => {
     if (res.data.header.code == 0) {
         getGoodsShopDetail({ goodsShopID: res.data.body.data.rows[0].goodsShopID }, res => {
@@ -91,11 +96,18 @@ getGoodsShopList({}, res => {
         justify-content: space-between;
 
         div:first-child {
-            border: 1px solid #000000;
+            width: 461px;
+            height: 59px;
+            border: 1px solid #4F4F4F;
         }
 
         div:last-child {
-            border-bottom: 1px solid #000000;
+            width: 355px;
+            height: auto;
+            max-height:500px;
+            :deep(.cell) {
+                text-align: center;
+            }
         }
     }
 }

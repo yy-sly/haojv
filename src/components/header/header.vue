@@ -21,12 +21,12 @@ const store = useStore();
 const router = useRouter()
 let clickArr = ['我的账户','购物车']
 const bthClick = (data) => {
-    // for (let i = 0; i < clickArr.length; i++) {
-    //     if(clickArr[i] === data.name){
-    //         login(data.functionURL,router)
-    //         return
-    //     }
-    // }
+    for (let i = 0; i < clickArr.length; i++) {
+        if(clickArr[i] === data.name){
+            login(data.functionURL,router)
+            return
+        }
+    }
     router.push(data.functionURL)
 }
 </script>
