@@ -19,9 +19,13 @@ export default {
         headerId: '8ba24a6021614dcc831921495b356ef4',
         footerId: 'f50a388f4be0464a96d7edb614a74d2c'
     },
+    //轮播图ID
     swiper:{
         homeId:'db0889fb56c04c0ea6f616fac969ebb7'
-    }
+    },
+    deviceID: '0268fffba23f48bf877f445e0536e45a',//火星
+    // deviceID: '2c9fa8bb89f9bb900189fd7f25020134',//好聚
+    // defaultAvatarURL:'',
 }
 // 获取localStorage
 function getStorage(name) {

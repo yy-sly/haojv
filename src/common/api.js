@@ -60,7 +60,7 @@ export const dPost = (method, data, fun) => {
         }
     }
     if (method == 'submitOneAgainst.json') {
-        data.siteID = '8a2f462a88708fb40188745fd48301a9';
+        data.siteID = common.siteID;
     }
     sendPost(dApiUrl + method, data, false, fun)
 }
@@ -189,3 +189,13 @@ export const submitEmailBandingMember = (data, callback) => dPost('submitEmailBa
 export const getFocusList = (data, callback) => dPost('getFocusPictureList.json', data, callback)
 // 注册
 export const memberPhoneRegister = (data, callback) => dPost('memberPhoneRegister.json', data, callback)
+// 登陆
+export const memberLogin = (data, callback) => dPost('memberLogin.json', data, callback)
+// 获取会员详细信息
+export const getOneMemberDetail = (data, callback) => dPost('getOneMemberDetail.json', data, callback)
+// 绑定邮箱
+export const applyEmailBindingMember = (data, callback) => dPost('applyEmailBindingMember.json', data, callback)
+// 获取商品列表
+export const getGoodsShopList = (data, callback) => dPost('getGoodsShopList.json', data, callback)
+// 获取商品详情
+export const getGoodsShopDetail = (data, callback) => dPost('getGoodsShopDetail.json', data, callback)

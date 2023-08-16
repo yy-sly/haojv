@@ -50,11 +50,11 @@ const store = useStore();
   height: 100%;
 }
 .swiper {
-  width: 1336px;
+  width: 1366px;
   margin: 0 auto;
   img {
     width: 100%;
-    height: 100%;
+    height: 768px;
   }
   .echarts {
     position: absolute;

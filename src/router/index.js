@@ -4,11 +4,7 @@ import Home from '../views/huoxingViews/homePage/homePage.vue'
 import routers from './huoxiangViews/index.js'
 const routes = [
   {
-    path:'/',
-    redirect:'/home'
-  },
-  {
-    path: '/home',
+    path: '/',
     name: 'home',
     component: Home
   },

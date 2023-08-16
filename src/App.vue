@@ -1,7 +1,7 @@
 <template>
   <div class="app">
     <Header/>
-    <main>
+    <main ref="main">
       <router-view />
     </main>
     <Footer/>
@@ -9,13 +9,20 @@
 </template>
 
 <script setup>
-import { inject } from "vue";
+import { inject,ref,onMounted} from "vue";
 import { useStore } from 'vuex';
 import Header from "./components/header/header.vue"
 import Footer from "./components/footer/footer.vue"
 let Common = inject('Common')
 console.log(Common)
 console.log(process.env.VUE_APP_BASE_API)
+let main = ref()
+onMounted(()=>{
+  main.value.style.minHeight = `${document.documentElement.clientHeight-647-80}px`
+})
+window.addEventListener('resize', ()=>{
+  main.value.style.minHeight = `${document.documentElement.clientHeight-647-80}px`
+});
 const store = useStore();
 store.dispatch('getNavList');
 store.dispatch('getSwiper');
