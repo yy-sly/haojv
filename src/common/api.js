@@ -199,3 +199,7 @@ export const applyEmailBindingMember = (data, callback) => dPost('applyEmailBind
 export const getGoodsShopList = (data, callback) => dPost('getGoodsShopList.json', data, callback)
 // 获取商品详情
 export const getGoodsShopDetail = (data, callback) => dPost('getGoodsShopDetail.json', data, callback)
+// 添加购物车
+export const addGoodsToCart = (data, callback) => dPost('addGoodsToCart.json', data, callback)
+// 删除购物车商品
+export const deleteGoodsFromCart = (data, callback) => dPost('deleteGoodsFromCart.json', data, callback)

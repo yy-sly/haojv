@@ -26,6 +26,7 @@ export default {
     deviceID: '0268fffba23f48bf877f445e0536e45a',//火星
     // deviceID: '2c9fa8bb89f9bb900189fd7f25020134',//好聚
     // defaultAvatarURL:'',
+    periodType:[{id:'1',name:'日'},{id:'2',name:'月'},{id:'3',name:'年'},{id:'10',name:'次'}]
 }
 // 获取localStorage
 function getStorage(name) {
