@@ -27,8 +27,8 @@
                         :header-cell-style="{ color: '#000000' }" max-height="450" style="--el-table-border-color: #000;">
                         <el-table-column text-align="center" prop="" width="57">
                             <template #default="scope">
-                                <el-button size="small" @click="delGoods(scope.row.cartGoodsID,scope.$index)" :disabled="!scope.row.cartGoodsID" type="info" :icon="Delete"
-                                    circle />
+                                <el-button size="small" @click="delGoods(scope.row.cartGoodsID, scope.$index)"
+                                    :disabled="!scope.row.cartGoodsID" type="info" :icon="Delete" circle />
                             </template>
                         </el-table-column>
                         <el-table-column text-align="center" prop="showName" label="计算力" width />
@@ -54,9 +54,8 @@
 </template>
 <script setup>
 import mainHeader from "@/components/header/mainHeader.vue";
-import { getGoodsShopList, getGoodsShopDetail, addGoodsToCart,deleteGoodsFromCart } from "@/common/api.js"
+import { getGoodsShopList, getGoodsShopDetail, addGoodsToCart, deleteGoodsFromCart } from "@/common/api.js"
 import { ElMessage } from "element-plus";
-
 import { Delete } from '@element-plus/icons-vue'
 import { reactive, inject } from "vue";
 let { periodType: periodTypelist } = inject('Common')
@@ -125,9 +124,9 @@ const getGoodsShopDetailfun = () => {
     })
 }
 //删除购物车
-const delGoods = (cartGoodsID,num) => {
-console.log(num)
-    deleteGoodsFromCart({cartGoodsID:cartGoodsID},res=>{
+const delGoods = (cartGoodsID, num) => {
+    console.log(num)
+    deleteGoodsFromCart({ cartGoodsID: cartGoodsID }, res => {
         if (res.data.header.code === 0) {
             ElMessage({
                 message: '删除购物车商品成功',
@@ -177,13 +176,14 @@ const addGoodsToCartfun = () => {
 }
 </script>
 <style lang="scss" scoped>
-.addShopsCarStylebox{
+.addShopsCarStylebox {
     width: 100%;
     margin-bottom: 55px;
     margin-top: 60px;
     display: flex;
     justify-content: center;
 }
+
 .addShopsCarStyle {
     width: 309px;
     height: 59px;
@@ -197,92 +197,92 @@ const addGoodsToCartfun = () => {
     margin: 0 auto;
 }
 
-:deep :focus-visible {
-    outline-style: none;
-}
-
-.shopList {
-    >h3 {
-        margin-top: 46px;
-        height: 23px;
-        font-size: 24px;
-        font-weight: 500;
-        color: #000000;
-        line-height: 23px;
-    }
-
-    >p {
-        margin-top: 24px;
-        display: flex;
-        align-items: center;
-
-        >p {
-            margin-left: 19px;
-            font-size: 16px;
-            font-weight: 400;
-            color: #555454;
-        }
-
-        margin-bottom: 60px;
-    }
-}
-
-.input-number-style {
-    :deep(.el-input__wrapper, .el-input__wrapper:hover) {
-        box-shadow: 0 0 0 1px var(--el-input-border-color, var(--el-border-color)) inset !important;
-    }
-}
-
-:deep(.el-input__suffix-inner::after) {
-    content: "单位/G";
-    position: absolute;
-    right: 30px;
-}
-
-.m-3::after {
-    content: "单位/G";
-    position: absolute;
-    right: 36px;
-}
-
-:deep(.el-table__footer-wrapper) {
-    display: none;
-}
-
-:deep(.m-2 .el-input__wrapper::before) {
-    content: "计算力：";
-    white-space: nowrap;
-    color: var(--el-input-icon-color, var(--el-text-color-placeholder));
-}
-
-.m-3::before {
-    content: "计算力：";
-}
-
-:deep(.el-select .el-input .el-select__caret) {
-    transform: rotateZ(-90deg);
-    transition: transform var(--el-transition-duration);
-}
-
-:deep(.el-select .el-input .el-select__caret.is-reverse) {
-    transform: rotateZ(0);
-}
-
-:deep(.el-input__wrapper.is-focus),
-:deep(.el-select .el-input.is-focus .el-input__wrapper),
-:deep(.el-input__wrapper:hover) {
-    box-shadow: 0 0 0 1px var(--el-input-border-color, var(--el-border-color)) inset !important;
-}
-
-:deep(.m-2 .el-input__wrapper) {
-    width: 461px;
-    height: 59px;
-    border: 1px solid #4F4F4F;
-}
-
 .goodsBox {
     padding: 0 145px;
     margin-top: 60px;
+
+    :deep :focus-visible {
+        outline-style: none;
+    }
+
+    .shopList {
+        >h3 {
+            margin-top: 46px;
+            height: 23px;
+            font-size: 24px;
+            font-weight: 500;
+            color: #000000;
+            line-height: 23px;
+        }
+
+        >p {
+            margin-top: 24px;
+            display: flex;
+            align-items: center;
+
+            >p {
+                margin-left: 19px;
+                font-size: 16px;
+                font-weight: 400;
+                color: #555454;
+            }
+
+            margin-bottom: 60px;
+        }
+    }
+
+    .input-number-style {
+        :deep(.el-input__wrapper, .el-input__wrapper:hover) {
+            box-shadow: 0 0 0 1px var(--el-input-border-color, var(--el-border-color)) inset !important;
+        }
+    }
+
+    :deep(.el-input__suffix-inner::after) {
+        content: "单位/G";
+        position: absolute;
+        right: 30px;
+    }
+
+    .m-3::after {
+        content: "单位/G";
+        position: absolute;
+        right: 36px;
+    }
+
+    :deep(.el-table__footer-wrapper) {
+        display: none;
+    }
+
+    :deep(.m-2 .el-input__wrapper::before) {
+        content: "计算力：";
+        white-space: nowrap;
+        color: var(--el-input-icon-color, var(--el-text-color-placeholder));
+    }
+
+    .m-3::before {
+        content: "计算力：";
+    }
+
+    :deep(.el-select .el-input .el-select__caret) {
+        transform: rotateZ(-90deg);
+        transition: transform var(--el-transition-duration);
+    }
+
+    :deep(.el-select .el-input .el-select__caret.is-reverse) {
+        transform: rotateZ(0);
+    }
+
+    :deep(.el-input__wrapper.is-focus),
+    :deep(.el-select .el-input.is-focus .el-input__wrapper),
+    :deep(.el-input__wrapper:hover) {
+        box-shadow: 0 0 0 1px var(--el-input-border-color, var(--el-border-color)) inset !important;
+    }
+
+    :deep(.m-2 .el-input__wrapper) {
+        width: 461px;
+        height: 59px;
+        border: 1px solid #4F4F4F;
+    }
 
     h3 {
         height: 23px;
@@ -313,18 +313,19 @@ const addGoodsToCartfun = () => {
             height: auto;
             max-height: 500px;
             overflow: hidden;
+
             :deep(.cell) {
                 text-align: center;
             }
         }
     }
-}
 
-.tableFooter {
-    width: 100%;
-    height: 41px;
-    text-align: center;
-    line-height: 40px;
-    border: 1px solid #000000;
-    border-top: none;
+    .tableFooter {
+        width: 100%;
+        height: 41px;
+        text-align: center;
+        line-height: 40px;
+        border: 1px solid #000000;
+        border-top: none;
+    }
 }</style>
