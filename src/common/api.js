@@ -82,14 +82,21 @@ export const dPostAndroid = (method, domainName, data, fun) => {
 
 // axios 发送请求统一处理
 export const sendPost = async (url, data, config, fun) => {
-    data = {
-        siteID: common.siteID,
-        focusID: common.focusID,
-        applicationID: common.applicationID,
-        companyID: common.companyID,
-        sessionID: window.localStorage.getItem("sessionID"),
-        memberID: window.localStorage.getItem("memberID"),
-        ...data,
+    if (url == 'interface-server/api/getCartGoodsList.json'||url == 'interface-server/api/addGoodsToCart.json') {
+        data = {
+            sessionID: window.localStorage.getItem("sessionID"),
+            memberID: window.localStorage.getItem("memberID"),
+            ...data,
+        }
+    } else {
+        data = {
+            siteID: common.siteID,
+            // focusID: common.focusID,
+            sessionID: window.localStorage.getItem("sessionID"),
+            memberID: window.localStorage.getItem("memberID"),
+            applicationID: common.applicationID,
+            ...data,
+        }
     }
     if (config) {
         // _this.$dialog.loading.open('上传中...')

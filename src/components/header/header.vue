@@ -14,19 +14,23 @@
 </template>
 <script setup>
 import { useStore } from 'vuex';
-import {useRouter} from "vue-router"
+import { useRouter } from "vue-router"
 import { inject } from 'vue'
 let login = inject('login')
 const store = useStore();
 const router = useRouter()
-let clickArr = ['我的账户','购物车']
+let clickArr = ['我的账户', '购物车']
+let sessionID = window.localStorage.getItem("sessionID")
 const bthClick = (data) => {
-    for (let i = 0; i < clickArr.length; i++) {
-        if(clickArr[i] === data.name){
-            login(data.functionURL,router)
-            return
+    if (!sessionID) {
+        for (let i = 0; i < clickArr.length; i++) {
+            if (clickArr[i] === data.name) {
+                login(data.functionURL, router)
+                return
+            }
         }
     }
+
     router.push(data.functionURL)
 }
 </script>
@@ -62,13 +66,14 @@ header {
     >ul {
         display: flex;
         margin-right: 67px;
+
         li {
             margin-left: 54px;
             font-size: 18px;
             font-weight: bold;
             color: #545151;
             line-height: 23px;
-            cursor:pointer;
+            cursor: pointer;
         }
     }
 }

@@ -131,9 +131,11 @@ import {
     getOneMemberDetail,
     applyEmailBindingMember,
 } from '@/common/api'
+import { useStore } from 'vuex';
 import Common from '@/common/common.js'
 import { ElInput, ElButton, ElCheckbox, ElMessage } from "element-plus";
 import { ref, reactive } from 'vue'
+const store = useStore();
 const props = defineProps({
     notice: {
         type: String,
@@ -150,11 +152,11 @@ const props = defineProps({
     target: {
         default: '1111'
     },
-    url:{
-        default:''
+    url: {
+        default: ''
     },
-    router:{
-        type:Function,
+    router: {
+        type: Function,
     }
 });
 const input = reactive({
@@ -192,7 +194,7 @@ const loginType = ref(true)
 const checked1 = ref(false)
 const checked2 = ref(false)
 
-const pageCut = () =>{
+const pageCut = () => {
     props.router.push(props.url)
 }
 //关闭
@@ -288,8 +290,12 @@ const checkInput = (value, Regex, str) => {
 }
 //注册
 const register = () => {
+    window.localStorage.clear()
     loadingType.registerType = true
-    memberPhoneRegister({ deviceID: Common.deviceID, verifyCode: '111111', ...input }, res => {
+    memberPhoneRegister({
+        companyID: Common.companyID,
+        deviceID: Common.deviceID, verifyCode: '111111', ...input
+    }, res => {
         loadingType.registerType = false
         if (res.data.header.code == 0) {
             ElMessage({
@@ -306,6 +312,7 @@ const login = () => {
     window.localStorage.clear()
     loadingType.loginLoadingType = true
     memberLogin({
+        companyID: Common.companyID,
         loginName: input.phone,
         password: input.password,
         deviceID: Common.deviceID,
@@ -317,19 +324,18 @@ const login = () => {
                 type: 'success',
             })
             window.localStorage.setItem("sessionID", res.data.body.sessionID);
-            window.localStorage.setItem("member", res.data.body.member);
             window.localStorage.setItem("memberID", res.data.body.memberID);
             getOneMemberDetail({}, res => {
-                console.log(res.data.header.code)
-                if(res.data.header.code!=0){
+                if (res.data.header.code != 0) {
                     ElMessage({
                         message: res.data.header.msg,
                         type: 'error',
                     })
+                    return
                 }
                 if (!res.data.body.email) {
-                loginType.value = 'email'
-                }else{
+                    loginType.value = 'email'
+                } else {
                     closeFun()
                     pageCut()
                 }
@@ -374,7 +380,7 @@ const submitForm = (type) => {
                     message: '验证码发送失败',
                     type: 'error',
                 })
-            }else if (res.data.header.code == 0) {
+            } else if (res.data.header.code == 0) {
                 ElMessage({
                     message: '验证码已发送',
                     type: 'success',

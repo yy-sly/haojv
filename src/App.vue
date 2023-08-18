@@ -26,6 +26,7 @@ window.addEventListener('resize', ()=>{
 const store = useStore();
 store.dispatch('getNavList');
 store.dispatch('getSwiper');
+store.dispatch('getUserInfo');
 </script>
 
 <style lang="scss">

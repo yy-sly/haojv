@@ -1,5 +1,5 @@
 import { createStore } from 'vuex'
-import { getNavigatorList,getFocusList } from "../common/api"
+import { getNavigatorList, getFocusList,getOneMemberDetail } from "../common/api"
 import { ElMessage } from "element-plus";
 import Common from "../common/common"
 export default createStore({
@@ -9,7 +9,7 @@ export default createStore({
     headerList: [],
     footerList: [],
     homeSwiper: [],
-    userinfo:[],
+    userinfo: [],
   },
   mutations: {
     // 这里定义修改状态的方法（同步）
@@ -22,8 +22,11 @@ export default createStore({
     headerId(state, data) {
       state.footerList = data
     },
-    homeId(state, data){
+    homeId(state, data) {
       state.homeSwiper = data
+    },
+    userinfo(state, data) {
+      state.userinfo = data
     }
   },
   actions: {
@@ -65,6 +68,20 @@ export default createStore({
           }
         })
       }
+    },
+    //获取用户信息
+    getUserInfo(context) {
+      getOneMemberDetail({}, res => {
+        if (res.data.header.code != 0) {
+          ElMessage({
+            message: res.data.header.msg,
+            type: 'error',
+          })
+          window.localStorage.clear()
+        } else {
+          context.commit('userinfo', res.data.body)
+        }
+      })
     }
 
   },
