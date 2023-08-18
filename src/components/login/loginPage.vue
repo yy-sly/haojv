@@ -320,6 +320,13 @@ const login = () => {
             window.localStorage.setItem("member", res.data.body.member);
             window.localStorage.setItem("memberID", res.data.body.memberID);
             getOneMemberDetail({}, res => {
+                console.log(res.data.header.code)
+                if(res.data.header.code!=0){
+                    ElMessage({
+                        message: res.data.header.msg,
+                        type: 'error',
+                    })
+                }
                 if (!res.data.body.email) {
                 loginType.value = 'email'
                 }else{

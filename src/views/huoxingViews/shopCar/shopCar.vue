@@ -21,7 +21,7 @@
                             :disabled="!scope.row.cartGoodsID" type="info" :icon="Delete" circle />
                     </template>
                 </el-table-column> -->
-                <el-table-column text-align="center" type="selection" width="55" />
+                <el-table-column text-align="center" type="selection" label="全选" width="80" />
 
 
                 <el-table-column text-align="center" prop="showName" label="产品" width />
@@ -33,8 +33,8 @@
                 <el-table-column text-align="center" prop="realPrice" label="小计" />
                 <el-table-column text-align="center" prop="" label="删除" width="57">
                     <template #default="scope">
-                        <el-button size="small" @click="delGoods(scope.row.cartGoodsID, scope.$index)"
-                            :disabled="!scope.row.cartGoodsID" type="info" :icon="Delete" circle />
+                        <el-button size="small" @click="delGoods(scope.row.cartGoodsID, scope.$index)" type="info"
+                            :icon="Delete" circle />
                     </template>
                 </el-table-column>
             </el-table>
@@ -46,7 +46,7 @@
 </template>
 <script setup>
 import mainHeader from "@/components/header/mainHeader.vue";
-import { } from "@/common/api.js"
+import { getCartGoodsList } from "@/common/api.js"
 import { ElMessage } from "element-plus";
 import { Delete } from '@element-plus/icons-vue'
 import { reactive } from "vue"
@@ -89,7 +89,9 @@ const getSummaries = (param) => {
 const handleSelectionChange = (val) => {
     data.multipleSelection = val
 }
-
+getCartGoodsList({},res=>{
+    console.log(res)
+})
 </script>
 <style lang="scss" scoped>
 .shopCar {
@@ -139,6 +141,15 @@ const handleSelectionChange = (val) => {
     margin-top: 97px;
     padding: 0 105px;
 
+    :deep(.el-table__header-wrapper .el-table-column--selection .cell:before) {
+        content: "全选";
+        position: absolute;
+        right: 18px;
+    }
+    :deep(.el-table__row .el-table-column--selection) {
+        text-align: center;
+    }
+
     :deep(.cell) {
         text-align: center;
     }
@@ -159,4 +170,5 @@ const handleSelectionChange = (val) => {
     :deep(.el-checkbox__inner) {
         border-radius: 50%;
     }
-}</style>
+}
+</style>

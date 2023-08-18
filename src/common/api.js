@@ -203,3 +203,5 @@ export const getGoodsShopDetail = (data, callback) => dPost('getGoodsShopDetail.
 export const addGoodsToCart = (data, callback) => dPost('addGoodsToCart.json', data, callback)
 // 删除购物车商品
 export const deleteGoodsFromCart = (data, callback) => dPost('deleteGoodsFromCart.json', data, callback)
+// 获取购物车列表
+export const getCartGoodsList = (data, callback) => dPost('getCartGoodsList.json', data, callback)

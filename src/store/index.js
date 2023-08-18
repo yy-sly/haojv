@@ -8,7 +8,8 @@ export default createStore({
     navList: [],
     headerList: [],
     footerList: [],
-    homeSwiper: []
+    homeSwiper: [],
+    userinfo:[],
   },
   mutations: {
     // 这里定义修改状态的方法（同步）
