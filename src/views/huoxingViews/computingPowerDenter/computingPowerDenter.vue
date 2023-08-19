@@ -79,7 +79,7 @@ const handleChange = (value) => {
     data.tableData[0] = {
         ...data.goods,
         periodNumber: data.goods.periodNumber * data.QTY,
-        realPrice: data.goods.realPrice * data.QTY
+        realPrice: data.goods.realPrice * data.QTY,
     }
 }
 //选中商品
@@ -125,7 +125,6 @@ const getGoodsShopDetailfun = () => {
 }
 //删除购物车
 const delGoods = (cartGoodsID, num) => {
-    console.log(num)
     deleteGoodsFromCart({ cartGoodsID: cartGoodsID }, res => {
         if (res.data.header.code === 0) {
             ElMessage({
@@ -152,7 +151,7 @@ getGoodsShopList({ salesType: 33 }, res => {
 //添加购物车
 const addGoodsToCartfun = () => {
     addGoodsToCart({
-        goodsID: data.goods.goodsID,
+        goodsShopID: data.goods.goodsShopID,
         QTY: 1,
         salesUnitQTY: data.QTY,
         periodType: data.goods.periodType,
@@ -328,4 +327,5 @@ const addGoodsToCartfun = () => {
         border: 1px solid #000000;
         border-top: none;
     }
-}</style>
+}
+</style>

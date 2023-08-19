@@ -60,7 +60,7 @@ header {
         font-weight: bold;
         color: #000000;
         line-height: 23px;
-        padding-left: 67px;
+        padding-left: 60px;
     }
 
     >ul {

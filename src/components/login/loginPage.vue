@@ -97,12 +97,11 @@
                     <p class="error">{{ error.errorPassword }}</p>
                     <p>确认密码</p>
                     <div class="inputBox">
-                        <el-input v-model="input.confirmPassword" type="confirmPassword"
+                        <el-input v-model="input.confirmPassword" type="password"
                             @blur="(e) => { confirmPasswordInput(e.target.value) }" @input="confirmPasswordInput"
                             placeholder="请在次输入密码" />
                     </div>
                     <p class="error">{{ error.errorloginName }}</p>
-
                     <!-- <p>验证码</p>
                     <div class="inputBox">
                         <el-input style="width: 120px;" v-model="input.code" type="code"

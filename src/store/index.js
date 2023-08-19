@@ -9,7 +9,7 @@ export default createStore({
     headerList: [],
     footerList: [],
     homeSwiper: [],
-    userinfo: [],
+    userinfo: {},
   },
   mutations: {
     // 这里定义修改状态的方法（同步）
@@ -73,10 +73,10 @@ export default createStore({
     getUserInfo(context) {
       getOneMemberDetail({}, res => {
         if (res.data.header.code != 0) {
-          ElMessage({
-            message: res.data.header.msg,
-            type: 'error',
-          })
+          // ElMessage({
+          //   message: res.data.header.msg,
+          //   type: 'error',
+          // })
           window.localStorage.clear()
         } else {
           context.commit('userinfo', res.data.body)

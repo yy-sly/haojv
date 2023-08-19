@@ -50,15 +50,15 @@ export const dPost = (method, data, fun) => {
         // delete data.sessionID
         // delete data.memberID
     }
-    if (method == 'standardCreateOneMemberOrder.json') {
-        if (common.getRecommendCode()) {
-            data.recommendCode = getRecommendCode() || '';
-            data.recommendMemberID = ''
-        } else {
-            data.recommendMemberID = common.getStorage("userInfo").recommendID || ''
-            data.recommendCode = '';
-        }
-    }
+    // if (method == 'standardCreateOneMemberOrder.json') {
+    //     if (common.getRecommendCode()) {
+    //         data.recommendCode = getRecommendCode() || '';
+    //         data.recommendMemberID = ''
+    //     } else {
+    //         data.recommendMemberID = common.getStorage("userInfo").recommendID || ''
+    //         data.recommendCode = '';
+    //     }
+    // }
     if (method == 'submitOneAgainst.json') {
         data.siteID = common.siteID;
     }
@@ -212,3 +212,5 @@ export const addGoodsToCart = (data, callback) => dPost('addGoodsToCart.json', d
 export const deleteGoodsFromCart = (data, callback) => dPost('deleteGoodsFromCart.json', data, callback)
 // 获取购物车列表
 export const getCartGoodsList = (data, callback) => dPost('getCartGoodsList.json', data, callback)
+// 创建订单
+export const standardCreateOneMemberOrder = (data, callback) => dPost('standardCreateOneMemberOrder.json', data, callback)
